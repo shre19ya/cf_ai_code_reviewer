@@ -4,7 +4,7 @@
  */
 {
 	"$schema": "node_modules/wrangler/config-schema.json",
-	"name": "cf-ai-code-reviewer",
+	"name": "cloudflare-assignment",
 	"main": "src/index.js",
 	"compatibility_date": "2026-03-19",
 	"ai": {
