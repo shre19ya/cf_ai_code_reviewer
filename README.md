@@ -69,6 +69,8 @@ wrangler deploy
 ```
 
 ---
+## ALTERNATIVE: Run directly:
+https://cf-ai-code-reviewer.shresinh.workers.dev/
 
 ## Example Usage
 
