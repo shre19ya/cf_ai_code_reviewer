@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code reviewer</title>
+</head>
+<body>
+    <h2>AI Code Reviewer</h2>
+
+    <textarea id="code" rows="10" cols="50"></textarea><br>
+
+    <select id="mode">
+    <option value="review">Review</option>
+    <option value="optimize">Optimize</option>
+    <option value="explain">Explain</option>
+    </select>
+
+    <button onclick="send()">Submit</button>
+
+    <pre id="output"></pre>
+
+    <script>
+        async function send() {
+        const code = document.getElementById("code").value;
+        const mode = document.getElementById("mode").value;
+        const output = document.getElementById("output");
+
+        output.innerText = "Loading...";
+
+        try {
+            const res = await fetch("/api", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ code, mode })
+            });
+
+            // Parse JSON safely
+            const data = await res.json();
+
+            // Show result or error
+            output.innerText = data.result || data.error || "No response";
+
+        } catch (err) {
+            output.innerText = "Error: " + err.message;
+        }
+        }
+        </script>
+
+    </body>
+</html>
